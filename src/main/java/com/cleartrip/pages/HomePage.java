@@ -21,7 +21,29 @@ public class HomePage {
 	@FindBy(id="errors1")
 	public WebElement signinErrorMessage;
 	
-	public HomePage(WebDriver driver){
+	@FindBy(id="modal_window")
+	public WebElement iFrame;
+	
+	//Hotel Booking
+    @FindBy(linkText = "Hotels")
+    public WebElement hotelLink;
+
+    @FindBy(id = "Tags")
+    public WebElement localityTextBox;
+
+    @FindBy(id = "SearchHotelsButton")
+    public WebElement searchButton;
+
+    @FindBy(id = "travellersOnhome")
+    public WebElement travellerSelection;
+
+    @FindBy(xpath = "//a[@class='ui-state-default ui-state-highlight ui-state-active ']")
+    public WebElement checkInDate; 
+    
+    @FindBy(xpath = "//a[@class='ui-state-default ui-state-active ']")
+    public WebElement checkOutDate; 
+    
+    public HomePage(WebDriver driver){
 		//this.driver=driver;
 		PageFactory.initElements(driver, this);
 	}

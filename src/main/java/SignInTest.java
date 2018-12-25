@@ -1,18 +1,23 @@
 import com.sun.javafx.PlatformUtil;
+import com.util.BaseClass;
+
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.testng.Assert;
+import org.testng.annotations.BeforeTest;
 import org.testng.annotations.Test;
 
-public class SignInTest {
+public class SignInTest extends BaseClass{
 
-    WebDriver driver = new ChromeDriver();
-
-    @Test
+	@BeforeTest
+	public void setup(){
+		setDriverPath();
+		startBrowser();
+	}
+	
+	@Test
     public void shouldThrowAnErrorIfSignInDetailsAreMissing() {
-
-        setDriverPath();
 
         driver.get("https://www.cleartrip.com/");
         waitFor(2000);
@@ -34,18 +39,4 @@ public class SignInTest {
             e.printStackTrace();  //To change body of catch statement use File | Settings | File Templates.
         }
     }
-
-    private void setDriverPath() {
-        if (PlatformUtil.isMac()) {
-            System.setProperty("webdriver.chrome.driver", "chromedriver");
-        }
-        if (PlatformUtil.isWindows()) {
-            System.setProperty("webdriver.chrome.driver", "chromedriver.exe");
-        }
-        if (PlatformUtil.isLinux()) {
-            System.setProperty("webdriver.chrome.driver", "chromedriver_linux");
-        }
-    }
-
-
 }

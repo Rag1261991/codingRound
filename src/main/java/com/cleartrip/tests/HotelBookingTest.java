@@ -19,7 +19,7 @@ public class HotelBookingTest extends BaseClass {
 	public void setup(){
 		setDriverPath();
 		startBrowser();
-		reportConfig();
+		reportConfig("Hotel Booking");
 		hp = new HomePage(driver);
 		cm = new CommonMethods(driver);
 	}
@@ -29,8 +29,8 @@ public class HotelBookingTest extends BaseClass {
     	logger = extent.createTest("shouldBeAbleToSearchForHotels");
         Assert.assertTrue(cm.clickOn(hp.hotelLink, logger), "Not able to click element");
         Assert.assertTrue(cm.enterTextInTextbox(hp.localityTextBox, logger, "Indiranagar, Bangalore"), "Not able to enter text");
-        Assert.assertTrue(cm.waitFor(2000, logger), "Not able to wait for element");
-        Assert.assertTrue(cm.pressEnter(logger), "Not able to press escape");
+        Assert.assertTrue(cm.waitFor(4000, logger), "Not able to wait for element");
+        Assert.assertTrue(cm.pressEnter(logger), "Not able to press enter");
         Assert.assertTrue(cm.clickOn(hp.datepicker, logger), "Not able to click element");
         Assert.assertTrue(cm.clickOn(hp.checkInDate, logger), "Not able to click element");
         Assert.assertTrue(cm.clickOn(hp.checkOutDate, logger), "Not able to click element");

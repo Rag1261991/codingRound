@@ -43,6 +43,22 @@ public class HomePage {
     @FindBy(xpath = "//a[@class='ui-state-default ui-state-active ']")
     public WebElement checkOutDate; 
     
+    @FindBy(xpath = "//i[@class='calendarIcon datePicker']")
+    public WebElement datepicker; 
+    
+    //Flight
+    @FindBy(id = "OneWay")
+    public WebElement oneWay;
+
+    @FindBy(id = "FromTag")
+    public WebElement fromTag;
+
+    @FindBy(id = "toTag")
+    public WebElement toTag;
+
+    @FindBy(id = "SearchBtn")
+    public WebElement searchBtn;
+    
     public HomePage(WebDriver driver){
 		//this.driver=driver;
 		PageFactory.initElements(driver, this);

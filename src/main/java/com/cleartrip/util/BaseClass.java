@@ -47,8 +47,8 @@ public class BaseClass {
         }
     }
 	
-	public void reportConfig(){
-		htmlReporter = new ExtentHtmlReporter(System.getProperty("user.dir")+"/extentReports/automation.html");
+	public void reportConfig(String name){
+		htmlReporter = new ExtentHtmlReporter(System.getProperty("user.dir")+"/extentReports/"+name+".html");
 		extent = new ExtentReports();
 		extent.attachReporter(htmlReporter);
 	}

@@ -4,6 +4,7 @@ import java.awt.Robot;
 import java.awt.event.KeyEvent;
 import java.io.File;
 import java.io.IOException;
+import java.util.List;
 
 import org.openqa.selenium.Keys;
 import org.openqa.selenium.OutputType;
@@ -113,6 +114,17 @@ public class CommonMethods {
         return true;
 	}
 	
+	public boolean waitTillElementsAreVisible(List<WebElement> we, ExtentTest logger) throws IOException{			
+        try {
+        	WebDriverWait wait=new WebDriverWait(driver,20);
+    		wait.until(ExpectedConditions.visibilityOf(we.get(0)));
+    		logger.log(Status.PASS,"Element: is visible");
+      } catch (Exception e) {
+    	  logger.fail(e.toString(), MediaEntityBuilder.createScreenCaptureFromPath(getScreenshot()).build());
+    	  return false;
+      }	
+        return true;
+	}
 	public String getScreenshot(){
 		TakesScreenshot ts = (TakesScreenshot) driver;
 		File src = ts.getScreenshotAs(OutputType.FILE);

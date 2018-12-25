@@ -19,7 +19,7 @@ public class SignInTest extends BaseClass{
 	public void setup(){
 		setDriverPath();
 		startBrowser();
-		reportConfig();
+		reportConfig("SignIn");
 		hp = new HomePage(driver);
 		cm = new CommonMethods(driver);
 	}

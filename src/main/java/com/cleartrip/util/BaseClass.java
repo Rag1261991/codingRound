@@ -5,15 +5,20 @@ import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.chrome.ChromeOptions;
 import org.openqa.selenium.remote.CapabilityType;
+
+import com.aventstack.extentreports.ExtentReports;
+import com.aventstack.extentreports.ExtentTest;
+import com.aventstack.extentreports.reporter.ExtentHtmlReporter;
 import com.sun.javafx.PlatformUtil;
 
 public class BaseClass {
 	public WebDriver driver;
-
-	public void startBrowser()
-	{
-		try
-		{
+	public ExtentHtmlReporter htmlReporter;
+	public ExtentReports extent;
+	public ExtentTest logger;
+	
+	public void startBrowser(){
+		try{
 			driver = new ChromeDriver();
 			ChromeOptions options = new ChromeOptions();
 			options.setCapability(CapabilityType.UNEXPECTED_ALERT_BEHAVIOUR, UnexpectedAlertBehaviour.ACCEPT);
@@ -22,8 +27,7 @@ public class BaseClass {
 			driver.manage().window().maximize();
 			driver.get("https://www.cleartrip.com/");
 		}
-		catch(Exception e)
-		{
+		catch(Exception e){
 			e.printStackTrace();
 		}
 	}
@@ -42,4 +46,10 @@ public class BaseClass {
             System.setProperty("webdriver.chrome.driver", "chromedriver_linux");
         }
     }
+	
+	public void reportConfig(){
+		htmlReporter = new ExtentHtmlReporter(System.getProperty("user.dir")+"/extentReports/automation.html");
+		extent = new ExtentReports();
+		extent.attachReporter(htmlReporter);
+	}
 }

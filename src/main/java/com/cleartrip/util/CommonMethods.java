@@ -5,6 +5,9 @@ import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
 
+import com.aventstack.extentreports.ExtentTest;
+import com.aventstack.extentreports.Status;
+
 
 public class CommonMethods {
 	
@@ -22,13 +25,14 @@ public class CommonMethods {
         }
     }
 	
-	public void clickOn(WebElement we){
+	public void clickOn(WebElement we, ExtentTest logger){
         try {
         	WebDriverWait wait=new WebDriverWait(driver,20);
         	wait.until(ExpectedConditions.elementToBeClickable(we));
+        	logger.log(Status.INFO,"Clicking :"+we.getText()+" element");
         	we.click();
       } catch (Exception e) {
-            e.printStackTrace();
+    	    logger.log(Status.FAIL, e.toString());
       }		
 	}
 
